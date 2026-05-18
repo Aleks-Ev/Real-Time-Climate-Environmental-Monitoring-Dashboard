@@ -69,16 +69,7 @@ python --version
 
 ```
 
-### Step 1: Open the Project Directory
-
-Launch your preferred terminal application (Command Prompt or PowerShell for Windows) and navigate to your source directory:
-
-```bash
-cd "C:\Users\Erdem\OneDrive\Рабочий стол\DV2"
-
-```
-
-### Step 2: Install Pipeline Dependencies
+### Step 1: Install Pipeline Dependencies
 
 Execute the standard package manager command to download required matrix processing and streaming modules:
 
@@ -87,7 +78,7 @@ pip install streamlit requests pandas altair
 
 ```
 
-### Step 3: Spin Up the Streamlit Engine
+### Step 2: Spin Up the Streamlit Engine
 
 To bypass any environmental binary execution constraints on Windows machines, launch the script explicitly using the Python module flag:
 
