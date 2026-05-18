@@ -106,5 +106,5 @@ To showcase the system's reactive **Change Detection & Alerting mechanisms** dur
 
 ## 👥 Engineering Team & Contacts
 
-* **Developer 1:** Erdem `[GitHub Profile Link / Contact Info]`
+* **Developer 1:** `[GitHub Profile Link / Contact Info]`
 * **Developer 2:** `[Partner Name / Contact Info]`
