@@ -1,103 +1,76 @@
-```markdown
 # 🌤️ Real-Time Climate & Environmental Monitoring Dashboard
 
-An interactive, production-ready real-time data visualization dashboard designed to monitor metropolitan microclimates and detect dangerous environmental anomalies (Urban Heat Island effects, flash heatwaves, and climate fluctuations). Built with **Python**, **Streamlit**, and **Altair**, utilizing live data streaming from the **OpenWeatherMap REST API**.
-
-This project represents **Track B (Real-Time Data Visualization)** of the Final Data Visualization Project.
-
-## 🚀 Key Features
-
-- **Live REST Ingestion Pipeline:** Consumes current climate metrics every 10 seconds with optimized connection handlers to stay safely within API rate limits (`HTTP 429` protection).
-- **Dynamic Node Switching:** Interactive sidebar to select different metropolitan nodes (Ankara, Istanbul, Moscow, London, New York) on the fly, with automated state management that flushes buffers upon node mutation.
-- **Sliding Window Temporal Context:** Displays an ongoing trend history bounded strictly at a fixed $N=20$ data points window to ensure optimal memory consumption and historical context.
-- **Pre-attentive Alerting System:** Real-time threshold monitoring with dynamic HTML/CSS injection. Breaching safe parameters triggers high-contrast blinking crimson styling (`#EF4444`) to instantly capture human pre-attentive focus without cognitive overhead.
-- **Enforced Chart Axis Stability:** Spatially locked coordinates inside Altair charts prevent axis-jumping, allowing operators to easily track exact trend slopes.
-- **Data Audit Export:** Dynamic on-the-fly serialization of the current sliding window matrix into a downloadable `.csv` spreadsheet file for compliance logging.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
+  <img src="https://img.shields.io/badge/Streamlit-1.25+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/Altair-Enforced%20Stability-orange?style=for-the-badge" alt="Altair">
+  <img src="https://img.shields.io/badge/API-OpenWeatherMap-informational?style=for-the-badge&logo=unrealengine&logoColor=white" alt="API">
+</p>
 
 ---
 
-## 🛠️ Installation & Local Setup Instructions
+## 📌 Project Overview
 
-Follow these steps to deploy and run the dynamic monitoring dashboard on your local machine:
+This interactive, production-ready live dashboard is engineered to monitor metropolitan microclimates and instantly capture severe environmental anomalies. By tracking real-time fluctuations, the system addresses the risks of **Urban Heat Island (UHI)** effects and unexpected local heatwaves.
 
-### Prerequisites
-Ensure you have **Python 3.8 to 3.11** installed on your system. You can verify your version by running:
-```bash
-python --version
+---
 
-```
+## 🚀 Key Technical Features
 
-### 1. Clone or Navigate to the Project Directory
+### 📡 1. Optimized REST Ingestion Pipeline
+- Consumes live atmospheric metrics from the **OpenWeatherMap API** endpoint.
+- Enforces a strict **10-second REST polling frequency** loop. This mathematically utilizes only 6 requests/min out of the 60 requests/min free-tier limit, providing an 80% safety buffer against rate-limiting (`HTTP 429` errors).
 
-Open your terminal (Command Prompt or PowerShell on Windows) and navigate to the project directory:
+### ⏳ 2. Bounded Sliding Window
+- Maintains a strict historical state queue constrained to **$N=20$ active data points** inside `st.session_state`. 
+- Prevents memory bloating by automatically pruning the oldest data frame records as new updates arrive.
 
-```bash
-cd "path/to/your/DV2/folder"
+### 🚨 3. Pre-attentive Threshold Alerting
+- Features a dynamic sidebar configuration where operators can adjust the **Temperature Alert Limit**.
+- Breaching safe operational boundaries instantly overrides the presentation layout with custom CSS animations, pulsing a high-contrast crimson warning (`#EF4444`) to guarantee immediate human reaction without reading fine print.
 
-```
+### 📊 4. Spatial Axis Stability
+- Locks the horizontal coordinate system and trend slopes inside Altair charts (`scale(domain=[10.0, 30.0])`). 
+- This prevents disturbing "axis jumping" transitions, optimizing cognitive load management.
 
-### 2. Install Required Dependencies
+### 💾 5. Compliance Log Export
+- Includes a live-serialization data engine that exports the current sliding window matrix into a standardized `.csv` spreadsheet file at the click of a button.
 
-Install all necessary Python data processing and visualization libraries via `pip`:
+---
 
-```bash
+## ⚙️ Pipeline Architecture Flow
+Step 1: Open the Project Directory
+Launch your preferred terminal application (Command Prompt or PowerShell for Windows) and navigate to your source directory:
+
+Bash
+cd "C:\Users\Erdem\OneDrive\Рабочий стол\DV2"
+Step 2: Install Pipeline Dependencies
+Execute the standard package manager command to download required matrix processing and streaming modules:
+
+Bash
 pip install streamlit requests pandas altair
+Step 3: Spin Up the Streamlit Engine
+To bypass any environmental binary execution constraints on Windows machines, launch the script explicitly using the Python module flag:
 
-```
-
-### 3. Run the Streamlit Application
-
-Because of environment path specifications on certain Windows machines, it is highly recommended to run Streamlit explicitly via the Python module flag:
-
-```bash
+Bash
 python -m streamlit run app.py
+Upon successful startup, a background web-worker instance will run locally, and your default web browser will automatically open the dashboard view at:
+👉 http://localhost:8501
 
-```
+💡 Live Demonstration Guide (For Presentation & Grading)
+To showcase the system's reactive Change Detection & Alerting mechanisms during your practical evaluation session, follow this scenario:
 
-Once executed, the terminal will spin up a local hosting worker instance, and the interactive interface will automatically open in your default browser at:
-`http://localhost:8501`
+Baseline Mode: Let the system execute smoothly for 30–40 seconds. Point out that the metrics layout uses neutral slate-blue tones, and connection updates refresh flawlessly every 10 seconds.
 
----
+Axis Stability Evaluation: Show that as new points arrive, the graph moves smoothly from right to left while the Y-axis numbers remain perfectly steady.
 
-## ⚙️ Project Architecture & Pipeline Flow
+Triggering the Alert: Navigate to the 🚨 Threshold Configurations component in the left sidebar.
 
-The system operates via a continuous REST Polling architecture:
+Altering Parameters: Use the numerical input field to reduce the Set Temperature Alert Limit (°C) to a digit lower than the current temperature on screen.
 
-```
-[ OpenWeatherMap API ] ──(HTTP GET every 10s)──> [ Streamlit Backend Buffer ]
-                                                              │
-                                                  (Pruning > 20 points)
-                                                              │
-                                                              ▼
-                                               [ Live Reactive Interface ]
-                                               ├── KPI Metrics Cards
-                                               ├── Stable Line Charts
-                                               └── Dynamic CSV Exporter
+Result Evaluation: On the very next refresh cycle, the main indicator card will instantly turn bright red, start an automated flashing pulse, and modify the chart trend lines to crimson red, demonstrating effective pre-attentive visualization design.
 
-```
+👥 Engineering Team & Contacts
+Developer 1: Erdem [GitHub Profile Link / Contact Info]
 
-## 🚨 Demonstration Guideline (For Project Presentation)
-
-To demonstrate the **Conditional Formatting Threshold Alert** during grading:
-
-1. Let the system run for 30 seconds in standard execution mode (Metrics cards will display a stable, calm slate-blue style).
-2. Go to the **🚨 Threshold Configurations** module located in the left sidebar.
-3. Lower the **Set Temperature Alert Limit (°C)** numerical wheel value to a digit slightly below the current actual node temperature.
-4. During the next 10-second polling refresh cycle, the UI will capture the change, swap current cards into a high-visibility crimson red blinking alarm state, and change the trend chart vectors to crimson red.
-
-## 👥 Team Composition & Members
-
-* **Member 1:** [Your Name / GitHub Profile]
-* **Member 2:** [Partner Name]
-* **Member 3:** [Partner Name]
-
-**Submission Deadline Reference:** May 25, 2026.
-
-```
-
----
-
-### Совет по загрузке на GitHub:
-Когда вы создадите репозиторий на GitHub и загрузите туда ваш `app.py` и этот `README.md`, GitHub автоматически прочитает этот файл и превратит его в красивую веб-страницу с таблицами, кодом и разметкой. Это будет выглядеть очень стильно для проверяющих!
-
-```
+Developer 2: [Partner Name / Contact Info]
