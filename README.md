@@ -13,10 +13,6 @@
 
 This interactive, production-ready live dashboard is engineered to monitor metropolitan microclimates and instantly capture severe environmental anomalies. By tracking real-time fluctuations, the system addresses the risks of **Urban Heat Island (UHI)** effects and unexpected local heatwaves.
 
-This application fulfills the complete set of requirements for **Track B (Real-Time Data Visualization)** of the Final Data Visualization Course Project.
-
-> 📅 **Submission Reference:** May 25, 2026
-
 ---
 
 ## 🚀 Key Technical Features
