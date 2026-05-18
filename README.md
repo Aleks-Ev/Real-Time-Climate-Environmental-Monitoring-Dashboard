@@ -108,6 +108,3 @@ To showcase the system's reactive **Change Detection & Alerting mechanisms** dur
 
 * **Developer 1:** Erdem `[GitHub Profile Link / Contact Info]`
 * **Developer 2:** `[Partner Name / Contact Info]`
-3. **Раскрывающийся список:** Раздел демонстрации для преподавателя будет аккуратно спрятан под стрелочку, по клику на которую развернется пошаговый чек-лист. Это экономит место и выглядит очень аккуратно.
-
-Этот файл готов на 100%. Просто сохрани его и отправляй в свой GitHub-репозиторий!
