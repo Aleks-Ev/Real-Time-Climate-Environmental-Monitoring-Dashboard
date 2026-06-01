@@ -169,7 +169,7 @@ MAX_POINTS = 20 # Размер окна истории на графике (та
 if "weather_history" not in st.session_state:
     st.session_state.weather_history = pd.DataFrame(columns=["Timestamp", "Temperature", "Humidity"])
 
-API_KEY = "3c1b15e8a039520c73c5242d48b82f77"
+API_KEY = "YOUR_API_KEY"
 URL = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
 def get_wind_direction(degrees):
